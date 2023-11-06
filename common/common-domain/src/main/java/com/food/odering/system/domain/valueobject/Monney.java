@@ -7,6 +7,8 @@ import java.util.Objects;
 public class Monney {
     private final BigDecimal amount;
 
+    public static final Monney ZER0 = new Monney(BigDecimal.ZERO);
+
     public Monney(BigDecimal amount) {
         this.amount = amount;
     }
