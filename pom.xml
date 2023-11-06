@@ -4,28 +4,28 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <modules>
+        <module>order-service</module>
+        <module>common</module>
+    </modules>
+
     <parent>
-        <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.7</version>
+        <groupId>org.springframework.boot</groupId>
+        <version>2.6.3</version>
         <relativePath/>
     </parent>
 
-    <groupId>org.food.ordering.system</groupId>
-    <artifactId>food-odering-system</artifactId>
+    <groupId>com.food.ordering.system</groupId>
+    <artifactId>food-ordering-system</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <packaging>pom</packaging>
-    <modules>
-        <module>order-service</module>
-    </modules>
 
     <properties>
         <maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencyManagement> <!--đặt trong đây giúp xác định phụ thuộc với phiên bản xác định nhanh chóng mà không thực sự tải xuống-->
+    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.food.ordering.system</groupId>
@@ -52,18 +52,37 @@
                 <artifactId>order-messaging</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.food.ordering.system</groupId>
+                <artifactId>common-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.9.0</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <release>17</release>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
 </project>
